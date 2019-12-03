@@ -14,8 +14,8 @@ class usuario_modelo{
 			"usu_fch_nac" => $datos["fecha"],
 			"usu_estado"  => 1,
 			"usu_rol"     => 2,
-            "usu_fch_rgt" => date("Y_m_d H_i_s"));
-            "usu_doc"
+            "usu_fch_rgt" => date("Y_m_d H_i_s"),
+			    "usu_doc" => $datos["documentoid"]);
 		$rta = $bd->insertar($c, "t_usuario", $sql);
 		return $rta;
 	}
