@@ -11,8 +11,8 @@
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>Fecha de nacimiento</label>
-						<input type="date" name="fecha" class="form-control" required>
+						<label>Apellido</label>
+						<input type="text" name="apellido" class="form-control" required>
 					</div>
 				</div>
 			</div>

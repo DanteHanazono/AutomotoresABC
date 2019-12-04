@@ -11,12 +11,12 @@ class usuario_modelo{
 			"usu_tipo"		=> $datos["tipo"],
 			"usu_correo"  	=> $datos["correo"],
 			"usu_pass"    	=> sha1($datos["password"]),
-			"usu_fch_nac" 	=> $datos["fecha"],
 			"usu_estado"  	=> 1,
 			"usu_rol"     	=> 2,
             "usu_fch_rgt" 	=> date("Y_m_d H_i_s"),
 			"usu_doc" 		=> $datos["documentoid"],
-			"usu_cel"		=> $datos["celular"]);
+			"usu_cel"		=> $datos["celular"],
+			"usu_apellido"	=> $datos["apellido"]);
 		$rta = $bd->insertar($c, "t_usuario", $sql);
 		return $rta;
 	}
@@ -84,7 +84,7 @@ class usuario_modelo{
 		$bd = new conexion();
 		$c = $bd->conectarse();
 		$sql = array("usu_nombre"  => $datos["nombre"],
-					"usu_fch_nac"  => $datos["nacimiento"],
+					"usu_apellido" => $datos["apellido"],
 					"usu_correo"  => $datos["correo"],
 					"usu_cel"		=> $datos["celular"]);
 

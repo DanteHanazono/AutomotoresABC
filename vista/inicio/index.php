@@ -10,7 +10,6 @@
 			?>
 		</h5>
 		<p>Vehiculos disponibles</p>
-
 		<?php
 		echo "<table class='table table-bordered'>";
 		echo "<tr>";
@@ -19,9 +18,11 @@
         echo "<th>PRECIO</th>";
 		echo "</tr>";
 		foreach ($this->datos as $valor) {
-			echo "<tr>";
-			echo "<td><a href='?controlador=vehiculo&accion=index&id=".$valor['veh_id']."'>".$valor['veh_marca']."</a></td>";
-			echo "</tr>";	
+		echo "<tr>";
+        echo "<td>".$valor["veh_marca"]."</td>";
+        echo "<td>".$valor["veh_modelo"]."</td>";
+		echo "<td>".$valor["veh_precio"]."</td>";
+		echo "</tr>";	
 		}
 		echo "</table>";
 		?>

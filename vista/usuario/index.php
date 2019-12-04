@@ -7,28 +7,26 @@
 		<?php
 		echo "<table class='table table-bordered'>";
 		echo "<tr>";
-		echo "<th>NOMBRE USUARIO</th>";
-		echo "<th>NICK</th>";
-		echo "<th>CORREO</th>";
-		echo "<th>ESTADO</th>";
-		echo "<th>ROL</th>";
+		echo "<th>NOMBRE</th>";
+		echo "<th>APELLIDO</th>";
+		echo "<th>TIPO DE DOCUMENTO</th>";
+		echo "<th>NUMERO DE DOCUMENTO</th>";
 		echo "<th></th>";
 		echo "<th></th>";
 		echo "</tr>";
 		foreach ($this->datos as $valor) {
-			$estado = ($valor["USU_ESTADO"]==1)?"Activo":"Inactivo";
-			$rol = ($valor["USU_ROL"]==1)?"Administrador":"Publicador";
+			$estado = ($valor["usu_estado"]==1)?"Activo":"Inactivo";
+			$rol = ($valor["usu_rol"]==1)?"Administrador":"Publicador";
 			echo "<tr>";
-			echo "<td>".$valor["USU_NOMBRES"]."</td>";
-			echo "<td>".$valor["USU_NICK"]."</td>";
-			echo "<td>".$valor["USU_CORREO"]."</td>";
-			echo "<td>".$estado."</td>";
-			echo "<td>".$rol."</td>";
+			echo "<td>".$valor["usu_nombre"]."</td>";
+			echo "<td>".$valor["usu_apellido"]."</td>";
+			echo "<td>".$valor["usu_tipo"]."</td>";
+			echo "<td>".$valor["usu_doc"]."</td>";
 
-			echo "<td><a href='?controlador=usuario&accion=frmEditar&id=".$valor['USU_ID']."'>Editar</a></td>";
+			echo "<td><a href='?controlador=usuario&accion=frmEditar&id=".$valor['usu_id']."'>Editar</a></td>";
 			$opcion = "";
-			if($valor["USU_ROL"] != 1) {
-				$opcion = "<a href='?controlador=usuario&accion=eliminar&id=".$valor['USU_ID']."' onclick='return confirm(\"¿Está seguro que desea eliminar?\")'>Eliminar</a>";
+			if($valor["usu_rol"] != 1) {
+				$opcion = "<a href='?controlador=usuario&accion=eliminar&id=".$valor['usu_id']."' onclick='return confirm(\"¿Está seguro que desea eliminar?\")'>Eliminar</a>";
 			}
 			echo "<td>$opcion</td>";
 			echo "</tr>";	

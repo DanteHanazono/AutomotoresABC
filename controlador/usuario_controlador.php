@@ -41,10 +41,10 @@ class usuario_controlador{
 			$this->vista->mensaje = "Este nick esta registrado";
 		}else{	
 			$datos["nombres"]  		= $nombres;
+			$datos["apellido"]		= $apellido;
 			$datos["nick"]     		= $nick;
 			$datos["password"] 		= $password;
 			$datos["correo"]   		= $correo;
-            $datos["fecha"]    		= $fecha;
 			$datos["documentoid"] 	= $documentoid;
 			$datos["tipo"] 			= $tipo;
 			$datos["celular"] 		= $celular;
@@ -64,10 +64,10 @@ class usuario_controlador{
 		if (count($rta) > 0) {
 			$_SESSION["usu_id"] = $rta["usu_id"];
 			$_SESSION["usu_nombre"] = $rta["usu_nombre"];
+			$_SESSION["usu_apellido"] = $rta["usu_apellido"];
 			$_SESSION["usu_rol"] = $rta["usu_rol"];
 			$_SESSION["usu_nick"] = $rta["usu_nick"];
 			$_SESSION["usu_correo"] = $rta["usu_correo"];
-			$_SESSION["usu_fch_nac"] = $rta["usu_fch_nac"];
 			$_SESSION["usu_doc"] = $rta["usu_doc"];
 			$_SESSION["usu_tipo"] = $rta["usu_tipo"];
 			$_SESSION["usu_cel"] = $rta["usu_cel"];
@@ -153,7 +153,7 @@ class usuario_controlador{
 		//}else{
 			extract($_REQUEST);
 			$datos["nombre"] = $nombre;
-			$datos["nacimiento"] = $nacimiento;
+			$datos["apellido"] = $apellido;
 			$datos["correo"] = $correo;
 			$datos["celular"] = $celular;
 			$datos["id"] = $_SESSION["usu_id"];
