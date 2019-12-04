@@ -1,7 +1,7 @@
 <div class="card">
 	<h5 class="card-header bg-dark text-white">Administración de Vehiculos</h5>
 	<div class="card-body">
-		<h5 class="card-title">Categoría</h5>
+		<h5 class="card-title">Vehiculos</h5>
 		<a class="btn btn-dark" href="?controlador=vehiculo&accion=frmCrear">Añadir Vehiculo</a>
 		<?php
 		echo "<table class='table table-bordered'>";

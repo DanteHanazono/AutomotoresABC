@@ -1,13 +1,15 @@
 <?php
-class categoria_modelo{
+class vehiculo_modelo{
 
 	public function __construct(){}
 
 	public static function mdlCrearVehiculo($datos){
 		$bd = new conexion();
 		$c = $bd->conectarse();
-		$sql = array("CAT_NOMBRE"  => $datos["nombre"],
-			"CAT_FCH_RGT" => date("Y-m-d H:i:s"));
+		$sql = array("veh_marca"  	=> $datos["marca"],
+					"veh_modelo"	=> $datos["modelo"],
+					"veh_precio"	=> $datos["precio"],
+					"veh_chasis"	=> $datos["chasis"]);
 		$rta = $bd->insertar($c, "t_vehiculo", $sql);
 		return $rta;
 	}
@@ -24,7 +26,7 @@ class categoria_modelo{
 	public static function mdlEliminar($id){
 		$bd = new conexion();
 		$c = $bd->conectarse();
-		$sql = "DELETE FROM t_vehiculo WHERE CAT_ID = :id";
+		$sql = "DELETE FROM t_vehiculo WHERE veh_id = :id";
 		$s = $c->prepare($sql);
 		return $s->execute(array("id" => $id));
 	}
@@ -32,7 +34,7 @@ class categoria_modelo{
 	public static function mdlConsultarVehXID($id){
 		$bd = new conexion();
 		$c = $bd->conectarse();
-		$sql = "SELECT * FROM t_vehiculo WHERE CAT_ID = :id";
+		$sql = "SELECT * FROM t_vehiculo WHERE veh_id = :id";
 		$s = $c->prepare($sql);
 		$s->execute(array("id" => $id));
 		if($s->rowCount() > 0){
@@ -45,9 +47,11 @@ class categoria_modelo{
 	public static function mdlEditar($datos){
 		$bd = new conexion();
 		$c = $bd->conectarse();
-		$sql = array("CAT_NOMBRE"  => $datos["nombre"]);
-
-		$rta = $bd->actualizar($c, "t_vehiculo", $sql, "WHERE CAT_ID = ".$datos["id"]);
+		$sql = array("veh_marca"  	=> $datos["marca"], 
+					"veh_modelo"	=> $datos["modelo"],
+					"veh_precio"	=> $datos["precio"],
+					"veh_chasis"	=> $datos["chasis"]);
+		$rta = $bd->actualizar($c, "t_vehiculo", $sql, "WHERE veh_id = ".$datos["id"]);
 		return $rta;
 	}
 }
