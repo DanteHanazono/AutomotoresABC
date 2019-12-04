@@ -33,22 +33,22 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>Documento de identidad</label>
-						<input type="file" name="foto" class="form-control" required>
+						<label>Tipo de documento</label>
+						<input type="text" name="tipo" class="form-control" required>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>Password</label>
-						<input type="password" name="password" class="form-control" required>
+						<label>Numero de documento</label>
+						<input type="number" name="documentoid" class="form-control" required>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>Foto</label>
-						<input type="file" name="foto" class="form-control" required>
+						<label>Password</label>
+						<input type="password" name="password" class="form-control" required>
 					</div>
 				</div>
 			</div>

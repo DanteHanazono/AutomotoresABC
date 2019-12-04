@@ -40,33 +40,19 @@ class usuario_controlador{
 		if ($rta > 0) {
 			$this->vista->mensaje = "Este nick esta registrado";
 		}else{	
-			$nombre_archivo = $_FILES["foto"]["name"];
-			$extension = explode(".", $nombre_archivo);
-			$longitud = count($extension);
-			$e = $extension[$longitud-1];
-			$nombre_archivo = date ("Y_m_d H_i_s")."".$nombre_archivo;
-			if (strtolower($e) == "jpg" || strtolower($e) == "gif" || strtolower($e) == "png") {
-				$archivo = $_FILES["foto"]["tmp_name"];
-				if (move_uploaded_file($archivo, "./public/image/".$nombre_archivo)) {
-					$datos["nombres"]  = $nombres;
-					$datos["nick"]     = $nick;
-					$datos["foto"]     = $nombre_archivo;
-					$datos["password"] = $password;
-					$datos["correo"]   = $correo;
-                    $datos["fecha"]    = $fecha;
-                    $datos["documentoid"] = $documento;
-					$rta = usuario_modelo::mdlRegUsuario($datos);
-					if ($rta > 0) {
-						$this->vista->mensaje = "Usuario registrado";
-					}else{
-						$this->vista->mensaje = "Error al registrar";
-					}
-
-				}else{
-					$this->vista->mensaje = "Error al subir";
-				}
+			$datos["nombres"]  = $nombres;
+			$datos["nick"]     = $nick;
+			$datos["foto"]     = $nombre_archivo;
+			$datos["password"] = $password;
+			$datos["correo"]   = $correo;
+            $datos["fecha"]    = $fecha;
+			$datos["documentoid"] = $documento;
+			$datos["tipo"] = $tipo;
+			$rta = usuario_modelo::mdlRegUsuario($datos);
+			if ($rta > 0) {
+				$this->vista->mensaje = "Usuario registrado";
 			}else{
-				$this->vista->mensaje = "Este tipo de archivo no esta permitido";
+				$this->vista->mensaje = "Error al registrar";
 			}
 		}
 		$this->vista->mostrarPagina("usuario/registro");
