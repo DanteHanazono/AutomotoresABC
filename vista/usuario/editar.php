@@ -7,13 +7,13 @@
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="inputGroup-sizing-sm">Nombre usuario</span>
 					</div>
-					<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="<?php echo $this->datos["USU_NOMBRES"]; ?>"  disabled>
+					<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="<?php echo $this->datos["usu_nombre"]; ?>"  disabled>
 				</div>
 				<div class="input-group input-group-sm mb-1 col-md-6">
 					<div class="input-group-prepend">
 						<span class="input-group-text" id="inputGroup-sizing-sm">Nick usuario</span>
 					</div>
-					<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="<?php echo $this->datos["USU_NICK"]; ?>"  disabled>
+					<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" value="<?php echo $this->datos["usu_nick"]; ?>"  disabled>
 				</div>
 			</div>
 			<div class="row">

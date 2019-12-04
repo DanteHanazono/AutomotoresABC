@@ -212,7 +212,6 @@ class usuario_controlador{
 			$tabla .= "<td>".$valor["usu_cel"]."</td>";
 			$tabla .= "<td>".$estado."</td>";
 			$tabla .= "<td>".$rol."</td>";
-
 			$tabla .= "<td><a href='?controlador=usuario&accion=frmEditar&id=".$valor['usu_id']."'>Editar</a></td>";
 			$opcion = "";
 			if($valor["USU_ROL"] != 1) {
