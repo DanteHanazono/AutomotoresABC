@@ -6,13 +6,27 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Nombres</label>
-						<input type="text" name="nombre" class="form-control" value="<?php echo $this->datos["USU_NOMBRES"]; ?>">
+						<input type="text" name="nombre" class="form-control" value="<?php echo $this->datos["usu_nombre"]; ?>">
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>Fecha de nacimiento</label>
-						<input type="date" name="nacimiento" class="form-control" value="<?php echo $this->datos["USU_FCH_NAC"]; ?>">
+						<label>Apellido</label>
+						<input type="text" name="apellido" class="form-control" value="<?php echo $this->datos["usu_apellido"]; ?>">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Tipo de documento</label>
+						<input type="text" name="tipo" class="form-control" value="<?php echo $this->datos["usu_tipo"]; ?>">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Numero de documento</label>
+						<input type="numero" name="documentoid" class="form-control" value="<?php echo $this->datos["usu_doc"]; ?>">
 					</div>
 				</div>
 			</div>
@@ -20,7 +34,13 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Correo</label>
-						<input type="text" name="correo" class="form-control" value="<?php echo $this->datos["USU_CORREO"]; ?>">
+						<input type="email" name="correo" class="form-control" value="<?php echo $this->datos["usu_correo"]; ?>">
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Numero de celular</label>
+						<input type="numero" name="celular" class="form-control" value="<?php echo $this->datos["usu_cel"]; ?>">
 					</div>
 				</div>
 			</div>
