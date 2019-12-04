@@ -29,34 +29,34 @@
     <!-- Links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-       <a class="nav-link" href="/Automotores_ABC">Inicio<span class="sr-only">(current)</span></a>
+       <a class="nav-link" href="/AutomotoresABC">Inicio<span class="sr-only">(current)</span></a>
      </li>
      <li class="nav-item">
-      <?php if (isset($_SESSION["USU_ID"])) { 
-        if ($_SESSION["USU_ROL"] == 1) { ?>
+      <?php if (isset($_SESSION["usu_id"])) { 
+        if ($_SESSION["usu_rol"] == 1) { ?>
           <li class="nav-item">
             <a class="nav-link" href="?controlador=vehiculo&accion=index">Adm. Vehiculos</a>
           </li>
         <?php } } ?>
-        <?php if (isset($_SESSION["USU_ID"])) { 
-          if ($_SESSION["USU_ROL"] == 1) { ?>
+        <?php if (isset($_SESSION["usu_id"])) { 
+          if ($_SESSION["usu_rol"] == 1) { ?>
             <li class="nav-item" >
               <a class="nav-link" href="?controlador=usuario&accion=index">Adm. Clientes</a>
             </li>
           <?php } } ?>
-          <?php if (isset($_SESSION["USU_ID"])) { 
-            if ($_SESSION["USU_ROL"] == 1) { ?>
+          <?php if (isset($_SESSION["usu_id"])) { 
+            if ($_SESSION["usu_rol"] == 1) { ?>
               <li class="nav-item" >
                 <a class="nav-link" href="?controlador=usuario&accion=frmBuscar">Buscar usuario</a>
               </li>
             <?php } } ?>
-            <?php if (!isset($_SESSION["USU_ID"])) { ?>
+            <?php if (!isset($_SESSION["usu_id"])) { ?>
               <li class="nav-item">
                 <a class="nav-link" href="?controlador=usuario&accion=frmRegistro">Registrarse</a>
               </li>
             <?php } ?>
 
-            <?php if (!isset($_SESSION["USU_ID"])) { ?>
+            <?php if (!isset($_SESSION["usu_id"])) { ?>
               <li class="nav-item">
                 <a class="nav-link" href="?controlador=usuario&accion=frmLogin">Iniciar Sesión</a>
               </li>
@@ -64,16 +64,16 @@
 
 
             <!-- Dropdown -->
-            <?php if (isset($_SESSION["USU_ID"])) { ?>
+            <?php if (isset($_SESSION["usu_id"])) { ?>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                   <?php echo $_SESSION["USU_NICK"];?> 
                 </a>
                 <div class="dropdown-menu">
-                  <?php if (isset($_SESSION["USU_ID"])) { ?>
+                  <?php if (isset($_SESSION["usu_id"])) { ?>
                     <a class="dropdown-item" href="?controlador=usuario&accion=frmPerfil">Perfil</a>
                   <?php } ?>
-                  <?php if (isset($_SESSION["USU_ID"])) { ?>
+                  <?php if (isset($_SESSION["usu_id"])) { ?>
                     <a class="dropdown-item" href="?controlador=usuario&accion=cerrar"> Cerrar Sesión </a>        
                   <?php } ?>
 
