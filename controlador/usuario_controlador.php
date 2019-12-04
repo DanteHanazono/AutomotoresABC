@@ -9,10 +9,10 @@ class usuario_controlador{
 	public function index(){
 		if(isset($_SESSION["usu_id"])){
 			if($_SESSION["usu_rol"] != 1){
-				header("Location: /AUTOMOTORES_ABC");
+				header("Location: /AutomotoresABC");
 			}
 		}else{
-			header("Location: /AUTOMOTORES_ABC");
+			header("Location: /AutomotoresABC");
 		}
 		$this->vista->datos = usuario_modelo::mdlListarUsuarios();
 		$this->vista->mostrarPagina("usuario/index");
@@ -33,21 +33,21 @@ class usuario_controlador{
 	public function crearUsuario(){
 		extract($_REQUEST);
 		if (!isset($_REQUEST["aceptar"])) {
-			header("Location: /AUTOMOTORES_ABC");
+			header("Location: /AutomotoresABC");
 			exit;
 		}
 		$rta = usuario_modelo::mdlValidarNick($nick);
 		if ($rta > 0) {
 			$this->vista->mensaje = "Este nick esta registrado";
 		}else{	
-			$datos["nombres"]  = $nombres;
-			$datos["nick"]     = $nick;
-			$datos["foto"]     = $nombre_archivo;
-			$datos["password"] = $password;
-			$datos["correo"]   = $correo;
-            $datos["fecha"]    = $fecha;
-			$datos["documentoid"] = $documento;
-			$datos["tipo"] = $tipo;
+			$datos["nombres"]  		= $nombres;
+			$datos["nick"]     		= $nick;
+			$datos["password"] 		= $password;
+			$datos["correo"]   		= $correo;
+            $datos["fecha"]    		= $fecha;
+			$datos["documentoid"] 	= $documentoid;
+			$datos["tipo"] 			= $tipo;
+			$datos["celular"] 		= $celular;
 			$rta = usuario_modelo::mdlRegUsuario($datos);
 			if ($rta > 0) {
 				$this->vista->mensaje = "Usuario registrado";
@@ -68,11 +68,14 @@ class usuario_controlador{
 			$_SESSION["usu_nick"] = $rta["usu_nick"];
 			$_SESSION["usu_correo"] = $rta["usu_correo"];
 			$_SESSION["usu_fch_nac"] = $rta["usu_fch_nac"];
+			$_SESSION["usu_doc"] = $rta["usu_doc"];
+			$_SESSION["usu_tipo"] = $rta["usu_tipo"];
+			$_SESSION["usu_cel"] = $rta["usu_cel"];
 			//header("Location: /FORO");
 			$this->vista->mensaje = "Bienvenido";
 			$estado = "success";
 			if ($_SERVER["HTTP_HOST"] == "localhost") {
-				$url = "http://localhost/FORO";
+				$url = "http://localhost/AutomotoresABC/";
 			}else{
 				$url = "https://foro.sit.moe/";
 			}
@@ -91,16 +94,16 @@ class usuario_controlador{
 
 	public function cerrar(){
 		session_destroy();
-		header("Location: /AUTOMOTORES_ABC");
+		header("Location: /AutomotoresABC");
 	}
 
 	public function eliminar(){
 		if(isset($_SESSION["usu_id"])){
 			if($_SESSION["usu_rol"] != 1){
-				header("Location: /AUTOMOTORES_ABC");
+				header("Location: /AutomotoresABC");
 			}
 		}else{
-			header("Location: /AUTOMOTORES_ABC");
+			header("Location: /AutomotoresABC");
 		}
 		extract($_REQUEST);
 		$rta = usuario_modelo::mdlEliminar($id);
@@ -110,10 +113,10 @@ class usuario_controlador{
 	public function frmEditar(){
 		if(isset($_SESSION["usu_id"])){
 			if($_SESSION["usu_rol"] != 1){
-				header("Location: /AUTOMOTORES_ABC");
+				header("Location: /AutomotoresABC");
 			}
 		}else{
-			header("Location: /AUTOMOTORES_ABC");
+			header("Location: /AutomotoresABC");
 		}
 		extract($_REQUEST);
 		$this->vista->datos = usuario_modelo::mdlConsultarUsuXID($id);
@@ -121,7 +124,7 @@ class usuario_controlador{
 	}
 	public function editarUsuario(){
 		if (!isset($_REQUEST["aceptar"])) {
-			header("Location: /AUTOMOTORES_ABC");
+			header("Location: /AutomotoresABC");
 		}else{
 			extract($_REQUEST);
 			$datos["estado"] = $estado;
@@ -134,10 +137,10 @@ class usuario_controlador{
 	public function frmEditarPerfil(){
 		if(isset($_SESSION["usu_id"])){
 			if($_SESSION["usu_rol"] != 1){
-				header("Location: /AUTOMOTORES_ABC");
+				header("Location: /AutomotoresABC");
 			}
 		}else{
-			header("Location: /AUTOMOTORES_ABC");
+			header("Location: /AutomotoresABC");
 		}
 		extract($_REQUEST);
 		$this->vista->datos = usuario_modelo::
@@ -152,6 +155,7 @@ class usuario_controlador{
 			$datos["nombre"] = $nombre;
 			$datos["nacimiento"] = $nacimiento;
 			$datos["correo"] = $correo;
+			$datos["celular"] = $celular;
 			$datos["id"] = $_SESSION["usu_id"];
 			$r = usuario_modelo::mdlEditarPerfil($datos);
 		//}
@@ -171,10 +175,10 @@ class usuario_controlador{
 	public function frmBuscar(){
 		if(isset($_SESSION["usu_id"])){
 			if($_SESSION["usu_rol"] != 1){
-				header("Location: /AUTOMOTORES_ABC");
+				header("Location: /AutomotoresABC");
 			}
 		}else{
-			header("Location: /AUTOMOTORES_ABC");
+			header("Location: /AutomotoresABC");
 		}
 		$this->vista->mostrarPagina("usuario/frmBuscar");
 	}
@@ -188,6 +192,9 @@ class usuario_controlador{
 		$tabla .= "<th>NOMBRE USUARIO</th>";
 		$tabla .= "<th>NICK</th>";
 		$tabla .= "<th>CORREO</th>";
+		$tabla .= "<th>TIPO DOCUMENTO</th>";
+		$tabla .= "<th>NUMERO DE DOCUMENTO</th>";
+		$tabla .= "<th>NUMERO DE CELULAR</th>";
 		$tabla .= "<th>ESTADO</th>";
 		$tabla .= "<th>ROL</th>";
 		$tabla .= "<th></th>";
@@ -200,6 +207,9 @@ class usuario_controlador{
 			$tabla .= "<td>".$valor["usu_nombre"]."</td>";
 			$tabla .= "<td>".$valor["usu_nick"]."</td>";
 			$tabla .= "<td>".$valor["usu_correo"]."</td>";
+			$tabla .= "<td>".$valor["usu_tipo"]."</td>";
+			$tabla .= "<td>".$valor["usu_doc"]."</td>";
+			$tabla .= "<td>".$valor["usu_cel"]."</td>";
 			$tabla .= "<td>".$estado."</td>";
 			$tabla .= "<td>".$rol."</td>";
 

@@ -15,7 +15,8 @@ class usuario_modelo{
 			"usu_estado"  	=> 1,
 			"usu_rol"     	=> 2,
             "usu_fch_rgt" 	=> date("Y_m_d H_i_s"),
-			"usu_doc" 		=> $datos["documentoid"]);
+			"usu_doc" 		=> $datos["documentoid"],
+			"usu_cel"		=> $datos["celular"]);
 		$rta = $bd->insertar($c, "t_usuario", $sql);
 		return $rta;
 	}
@@ -83,8 +84,9 @@ class usuario_modelo{
 		$bd = new conexion();
 		$c = $bd->conectarse();
 		$sql = array("usu_nombre"  => $datos["nombre"],
-						"usu_fch_nac"  => $datos["nacimiento"],
-							"usu_correo"  => $datos["correo"]);
+					"usu_fch_nac"  => $datos["nacimiento"],
+					"usu_correo"  => $datos["correo"],
+					"usu_cel"		=> $datos["celular"]);
 
 		$rta = $bd->actualizar($c, "t_usuario", $sql, "WHERE usu_id = ".$datos["id"]);
 		return $rta;

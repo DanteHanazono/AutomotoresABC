@@ -67,7 +67,7 @@
             <?php if (isset($_SESSION["usu_id"])) { ?>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                  <?php echo $_SESSION["USU_NICK"];?> 
+                  <?php echo $_SESSION["usu_nick"];?> 
                 </a>
                 <div class="dropdown-menu">
                   <?php if (isset($_SESSION["usu_id"])) { ?>
