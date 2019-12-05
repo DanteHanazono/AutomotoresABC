@@ -27,23 +27,30 @@ class vehiculo_controlador{
 	}
 	public function crearVehiculo(){
 		extract($_REQUEST);
-        $datos["marca"] = $marca;
-        $datos["modelo"] = $modelo;
-        $datos["precio"] = $precio;
-        $datos["chasis"] = $chasis;
-		$rta = vehiculo_modelo::mdlCrearVehiculo($datos);
-		if ($rta > 0) {
-			$this->vista->mensaje = "Vehiculo creado";
-			$estado = "success";
-			$icono = "ti-thumb-up";
-		}else{	
-			$this->vista->mensaje = "Error al crear";
+		$rta = vehiculo_modelo::mdlValidarChasis($chasis);
+		if($rta>0){
+			$this->vista->mensaje = "Este numero de chasis ya esta registrado";
 			$estado = "danger";
 			$icono = "ti-close";
+		}else{
+        	$datos["marca"] = $marca;
+        	$datos["modelo"] = $modelo;
+        	$datos["precio"] = $precio;
+        	$datos["chasis"] = $chasis;
+			$rta = vehiculo_modelo::mdlCrearVehiculo($datos);
+			if ($rta > 0) {
+				$this->vista->mensaje = "Vehiculo creado";
+				$estado = "success";
+				$icono = "ti-thumb-up";
+			}else{	
+				$this->vista->mensaje = "Error al crear";
+				$estado = "danger";
+				$icono = "ti-close";
+			}
 		}
 		echo json_encode(array("mensaje" => $this->vista->mensaje,
-			"estado" => $estado,
-			"icono" => $icono));
+		"estado" => $estado,
+		"icono" => $icono));
 	}
 	public function eliminar(){
 		if(isset($_SESSION["usu_id"])){

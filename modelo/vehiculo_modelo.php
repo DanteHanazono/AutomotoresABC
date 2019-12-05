@@ -14,6 +14,15 @@ class vehiculo_modelo{
 		return $rta;
 	}
 
+	public function mdlValidarChasis($chasis){
+		$bd = new conexion();
+		$c = $bd->conectarse();
+		$sql = "SELECT * FROM t_vehiculo WHERE veh_chasis = :veh_chasis";
+		$s = $c->prepare($sql);
+		$s->execute(array("veh_chasis" => $chasis));
+		return $s->rowCount();
+	}
+
 	public static function mdlListarVehiculos(){
 		$bd = new conexion();
 		$c = $bd->conectarse();

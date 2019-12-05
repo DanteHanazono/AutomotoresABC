@@ -92,7 +92,6 @@ $(function(){
 				type: e.estado 
 			}); 
 		},"json");
-
 		return false;
 	});
 	$("#nick").keyup(function(){
