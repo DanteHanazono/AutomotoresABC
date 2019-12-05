@@ -50,11 +50,12 @@
                 <a class="nav-link" href="?controlador=usuario&accion=frmBuscar">Comprar Vehiculo</a>
               </li>
             <?php } } ?>
-            <?php if (!isset($_SESSION["usu_id"])) { ?>
+            <?php if (isset($_SESSION["usu_id"])) { 
+              if($_SESSION["usu_rol"]==1){?>
               <li class="nav-item">
                 <a class="nav-link" href="?controlador=usuario&accion=frmRegistro">Registrarse</a>
               </li>
-            <?php } ?>
+            <?php } }?>
 
             <?php if (!isset($_SESSION["usu_id"])) { ?>
               <li class="nav-item">
