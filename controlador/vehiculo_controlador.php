@@ -73,6 +73,9 @@ class vehiculo_controlador{
 	public function editarVehiculo(){
 		extract($_REQUEST);
 		$datos["marca"] = $marca;
+		$datos["modelo"] = $modelo;
+		$datos["precio"] = $precio;
+		$datos["chasis"] = $chasis;
 		$datos["id"] = $id;
 		$r = vehiculo_modelo::mdlEditar($datos);
 		if ($r > 0) {
@@ -86,6 +89,6 @@ class vehiculo_controlador{
 		}
 		echo json_encode(array("mensaje" => $this->vista->mensaje,
 			"estado" => $estado,
-			"icono" => $icono));
+			"icono" => $icono, "url" => "http://localhost/AutomotoresABC/?controlador=vehiculo&accion=index"));
 	}
 }

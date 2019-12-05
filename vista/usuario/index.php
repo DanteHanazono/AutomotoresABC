@@ -2,8 +2,7 @@
 	<h5 class="card-header bg-dark text-white">Usuario</h5>
 	<div class="card-body">
 		<h5 class="card-title">Información del usuario</h5>
-		<p class="card-text">Aquí se crea o edita la información del usuario</p>
-
+		<a class="btn btn-dark" href="?controlador=usuario&accion=frmRegistro">Añadir Cliente</a>
 		<?php
 		echo "<table class='table table-bordered'>";
 		echo "<tr>";

@@ -29,7 +29,10 @@ $(function(){
 				message: e.mensaje 
 			},{
 				type: e.estado 
-			}); 
+			});
+			if (e.estado == "success") {
+				window.location = e.url;
+			}
 		},"json");
 
 		return false;

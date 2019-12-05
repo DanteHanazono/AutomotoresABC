@@ -12,12 +12,12 @@
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-  <link rel="stylesheet" type="text/css" href="Public/CSS/themify-icons.css">
+  <link rel="stylesheet" type="text/css" href="public/css/themify-icons.css">
 
   <link href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css" rel="stylesheet">
 
-  <script type="text/javascript" src="Public/JS/bootstrap-notify.min.js"></script>
-  <script type="text/javascript" src="Public/JS/default.js"></script>
+  <script type="text/javascript" src="public/js/bootstrap-notify.min.js"></script>
+  <script type="text/javascript" src="public/js/default.js"></script>
 
 </head>
 <body>
@@ -50,13 +50,6 @@
                 <a class="nav-link" href="?controlador=usuario&accion=frmBuscar">Comprar Vehiculo</a>
               </li>
             <?php } } ?>
-            <?php if (isset($_SESSION["usu_id"])) { 
-              if($_SESSION["usu_rol"]==1){?>
-              <li class="nav-item">
-                <a class="nav-link" href="?controlador=usuario&accion=frmRegistro">Registrarse</a>
-              </li>
-            <?php } }?>
-
             <?php if (!isset($_SESSION["usu_id"])) { ?>
               <li class="nav-item">
                 <a class="nav-link" href="?controlador=usuario&accion=frmLogin">Iniciar Sesión</a>
