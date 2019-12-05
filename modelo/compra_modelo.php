@@ -24,11 +24,13 @@ class compra_modelo{
 			return array();
 		}
     }
-    public static function mdlListarCompras($id){
+    public static function mdlListarCompras(){
 		$bd = new conexion();
 		$c = $bd->conectarse();
-		$sql = "SELECT * FROM t_compra inner join t_usuario on usu_id = compra_usu_id
-		WHERE compra_veh_id =".$id. " ORDER BY compra_id DESC";
+		$sql = "SELECT * FROM t_compra 
+        inner join t_usuario on usu_id = compra_usu_id
+        inner join t_vehiculo on veh_id = compra_veh_id
+		ORDER BY compra_id DESC";
 		$s = $c->prepare($sql);
 		$s->execute();
 		return $s->fetchAll();
