@@ -10,7 +10,7 @@ class compra_controlador{
 		$this->vista->mostrarPagina("comprar/index");
     }
     public function frmComprar(){
-		$this->vista->mostrarPagina("comprar/cmpra");
+		$this->vista->mostrarPagina("comprar/compra");
 	}
     public function eliminar(){
 		if(isset($_SESSION["usu_id"])){
