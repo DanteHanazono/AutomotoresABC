@@ -17,7 +17,23 @@ $(function(){
 
 		return false;
 	});
+	$("#frmComprar").submit(function(){
+		var url = $(this).attr("action");
+		var datos = $(this).serialize();
 
+		$.post(url, datos, function(e){
+
+			$.notify({
+				icon: e.icono,
+				message: e.mensaje 
+			},{
+				type: e.estado 
+			}); 
+			$("#nombre").val("");
+		},"json");
+
+		return false;
+	});
 	$("#frmECat").submit(function(){
 		var url = $(this).attr("action");
 		var datos = $(this).serialize();

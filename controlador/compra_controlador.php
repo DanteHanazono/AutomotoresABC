@@ -16,12 +16,10 @@ class compra_controlador{
 		extract($_REQUEST);
 		$datos["documentoid"] = $documentoid;
 		$datos["chasis"] = $chasis;
-		
 		$Vector1 = compra_modelo::mdlBuscarUsuarioXCC($documentoid);
     	$datos["usu_id"] = $Vector1["usu_id"];
 		$Vector2 = compra_modelo::mdlConsultarVehXChasis($chasis);
 		$datos["veh_id"] = $Vector2["veh_id"];
-
 		$rta = compra_modelo::mdlComprar($datos);
 		if ($rta > 0) {
 			$this->vista->mensaje = "Compra realizada";
@@ -40,7 +38,7 @@ class compra_controlador{
 		if(isset($_SESSION["usu_id"])){
 			extract($_REQUEST);
 			$rta = compra_modelo::mdlEliminar($id);
-			header("Location:?controlador=compra&accion=index&id=".$veh_id);
+			header("Location:?controlador=compra&accion=index&id=".$compra_id);
 		}else{
 			header("Location: /");
 		}

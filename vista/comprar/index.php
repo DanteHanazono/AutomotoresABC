@@ -20,7 +20,7 @@
 			echo "<td>".$valor["usu_doc"]."</td>";
 			echo "<td>".$valor["veh_chasis"]."</td>";
 			if($valor["usu_rol"] != 1) {
-				$opcion = "<a href='?controlador=usuario&accion=eliminar&id=".$valor['usu_id']."' onclick='return confirm(\"¿Está seguro que desea eliminar?\")'>Eliminar</a>";
+				$opcion = "<a href='?controlador=compra&accion=eliminar&id=".$valor['compra_id']."' onclick='return confirm(\"¿Está seguro que desea eliminar?\")'>Eliminar</a>";
 			}
 			echo "<td>$opcion</td>";
 			echo "</tr>";	
