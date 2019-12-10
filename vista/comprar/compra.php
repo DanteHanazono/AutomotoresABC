@@ -12,7 +12,13 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Numero unico del chasis del vehiculo</label>
-						<input type="number" name="chasis" class="form-control" required>
+						<select name="chasis" class="form-control">
+							<?php
+								foreach($this->rta as $v){
+									echo "<option value='".$v["veh_chasis"]."'>".$v["veh_chasis"]."</option>";
+								}
+							?>
+						</select>
 					</div>
 				</div>
 			</div>

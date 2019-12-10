@@ -23,7 +23,18 @@ class compra_modelo{
 		} else {
 			return array();
 		}
-    }
+	}
+
+	public static function mdlListardisponibles(){
+		$bd = new conexion();
+		$c = $bd->conectarse();
+		$sql = "SELECT * FROM t_compra 
+		right  join t_vehiculo on veh_id = compra_veh_id WHERE compra_veh_id IS NULL";
+		$s = $c->prepare($sql);
+		$s->execute();
+		return  $s->fetchAll();
+
+	}
     public static function mdlListarCompras(){
 		$bd = new conexion();
 		$c = $bd->conectarse();

@@ -34,7 +34,10 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Tipo de documento</label>
-						<input type="text" name="tipo" class="form-control" required>
+						<select name="tipo" class="form-control">
+  							<option value="CC">CC</option>
+  							<option value="CE">CE</option>
+						</select>
 					</div>
 				</div>
 				<div class="col-md-6">
