@@ -58,7 +58,7 @@
 					</div>
 				</div>
 			</div>
-			<input type="submit" name="aceptar" value="Registrar" class="btn btn-success">
+			<input type="submit" name="aceptar" value="Añadir" class="btn btn-success">
 			<br />
 			<?php
 			if (isset($this->mensaje)) {

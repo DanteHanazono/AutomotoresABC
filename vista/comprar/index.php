@@ -13,16 +13,12 @@
 		echo "<th></th>";
 		echo "</tr>";
 		foreach ($this->datos as $valor) {
-			$estado = ($valor["usu_estado"]==1)?"Activo":"Inactivo";
-			$rol = ($valor["usu_rol"]==1)?"Administrador":"Publicador";
 			echo "<tr>";
 			echo "<td>".$valor["usu_nombre"]."</td>";
 			echo "<td>".$valor["usu_apellido"]."</td>";
 			echo "<td>".$valor["usu_tipo"]."</td>";
 			echo "<td>".$valor["usu_doc"]."</td>";
-
-			echo "<td><a href='?controlador=usuario&accion=frmEditar&id=".$valor['usu_id']."'>Editar</a></td>";
-			$opcion = "";
+			echo "<td>".$valor["veh_chasis"]."</td>";
 			if($valor["usu_rol"] != 1) {
 				$opcion = "<a href='?controlador=usuario&accion=eliminar&id=".$valor['usu_id']."' onclick='return confirm(\"¿Está seguro que desea eliminar?\")'>Eliminar</a>";
 			}

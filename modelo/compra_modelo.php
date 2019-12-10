@@ -12,10 +12,10 @@ class compra_modelo{
 		$rta = $bd->insertar($c, "t_compra", $sql);
 		return $rta;
     }
-    public static function mdlConsultarVehXID($id){
+    public static function mdlConsultarVehXChasis($id){
 		$bd = new conexion();
 		$c = $bd->conectarse();
-		$sql = "SELECT * FROM t_vehiculo WHERE veh_id = :id";
+		$sql = "SELECT * FROM t_vehiculo WHERE veh_chasis = :id";
 		$s = $c->prepare($sql);
 		$s->execute(array("id" => $id));
 		if($s->rowCount() > 0){
@@ -34,7 +34,19 @@ class compra_modelo{
 		$s = $c->prepare($sql);
 		$s->execute();
 		return $s->fetchAll();
-    }
+	}
+	public static function mdlBuscarUsuarioXCC($documentoid){
+		$bd = new conexion();
+		$c = $bd->conectarse();
+		$sql = "SELECT * FROM t_usuario WHERE usu_doc = :idu";
+		$s = $c->prepare($sql);
+		$s->execute(array("idu" => $documentoid));
+		if($s->rowCount() > 0){
+			return $s->fetch();
+		} else {
+			return array();
+		}
+	}
     public static function mdlEliminar($id){
 		$bd = new conexion();
 		$c = $bd->conectarse();

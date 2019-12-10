@@ -50,7 +50,7 @@ class usuario_controlador{
 			$datos["celular"] 		= $celular;
 			$rta = usuario_modelo::mdlRegUsuario($datos);
 			if ($rta > 0) {
-				$this->vista->mensaje = "Usuario registrado";
+				$this->vista->mensaje = "Cliente registrado";
 			}else{
 				$this->vista->mensaje = "Error al registrar";
 			}
